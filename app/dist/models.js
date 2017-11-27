@@ -1,36 +1,33 @@
 /// <reference path="_all.ts" />
-var ContactManagerApp;
-(function (ContactManagerApp) {
-    var CreateUser = (function () {
-        function CreateUser(firstName, lastName, avatar, bio) {
-            this.firstName = firstName;
-            this.lastName = lastName;
-            this.avatar = avatar;
-            this.bio = bio;
+var FlytiveApp;
+(function (FlytiveApp) {
+    var Package = /** @class */ (function () {
+        function Package(id, destination, destCoords, origin, isReturn, price, userScore, scoreRange, isOnOneTicket, landDistance, regionIds, isWeekend) {
+            this.id = id;
+            this.destination = destination;
+            this.destCoords = destCoords;
+            this.origin = origin;
+            this.isReturn = isReturn;
+            this.price = price;
+            this.userScore = userScore;
+            this.scoreRange = scoreRange;
+            this.isOnOneTicket = isOnOneTicket;
+            this.landDistance = landDistance;
+            this.regionIds = regionIds;
+            this.isWeekend = isWeekend;
         }
-        return CreateUser;
-    })();
-    ContactManagerApp.CreateUser = CreateUser;
-    var User = (function () {
-        function User(name, avatar, bio, notes) {
-            this.name = name;
-            this.avatar = avatar;
-            this.bio = bio;
-            this.notes = notes;
+        return Package;
+    }());
+    FlytiveApp.Package = Package;
+    var Date = /** @class */ (function () {
+        function Date(id, outboundDate, inboundDate, price) {
+            this.id = id;
+            this.outboundDate = outboundDate;
+            this.inboundDate = inboundDate;
+            this.price = price;
         }
-        User.fromCreate = function (user) {
-            return new User(user.firstName + ' ' + user.lastName, user.avatar, user.bio, []);
-        };
-        return User;
-    })();
-    ContactManagerApp.User = User;
-    var Note = (function () {
-        function Note(title, date) {
-            this.title = title;
-            this.date = date;
-        }
-        return Note;
-    })();
-    ContactManagerApp.Note = Note;
-})(ContactManagerApp || (ContactManagerApp = {}));
+        return Date;
+    }());
+    FlytiveApp.Date = Date;
+})(FlytiveApp || (FlytiveApp = {}));
 //# sourceMappingURL=models.js.map

@@ -1,14 +1,18 @@
-<md-bottom-sheet>
+<md-bottom-sheet style="position: fixed">
   <md-subheader>
-    Contact <span class="name">{{ cp.user.name }}</span>:
+    Dates <span class="name">{{  }}</span>:
   </md-subheader>
+
+  <md-content>
+    <md-calendar 
+    class='fixed-calendar' 
+    ng-model='outboundDate' 
+    md-min-date='cp.minOutboundDate' 
+    md-max-date='cp.maxOutboundDate' 
+    md-date-filter='cp.outboundDatesFilter'>
+  </md-calendar>
+  <md-content><md-calendar class='fixed-calendar' ng-model='inboundDate' md-min-date='minInboundDate' md-max-date='maxInboundDate' md-date-filter='inboundDatesFilter'></md-calendar></md-content>
+</md-content>
   
-  <md-list>
-    <md-item ng-repeat="item in cp.actions">
-      <md-button ng-click="cp.submitContact(item)" id="item_{{$index}}">
-        <md-icon md-svg-icon="{{ item.icon }}"></md-icon>
-        {{item.name}}
-        </md-button>
-    </md-item>
-  </md-list>
+
 </md-bottom-sheet>

@@ -1,20 +1,18 @@
 /// <reference path="_all.ts" />
-var ContactManagerApp;
-(function (ContactManagerApp) {
-    angular.module('contactManagerApp', ['ngMaterial', 'ngMdIcons', 'ngMessages'])
-        .service('userService', ContactManagerApp.UserService)
-        .controller('mainController', ContactManagerApp.MainController)
+var FlytiveApp;
+(function (FlytiveApp) {
+    angular.module('flytiveApp', ['ngMaterial', 'ngMdIcons', 'ngMessages', 'ngMap'])
+        .service('packageService', FlytiveApp.PackageService)
+        .service('datesService', FlytiveApp.DatesService)
+        .controller('mainController', FlytiveApp.MainController)
         .config(function ($mdIconProvider, $mdThemingProvider) {
         $mdIconProvider
-            .defaultIconSet('./assets/svg/avatars.svg', 128)
-            .icon("google_plus", "./assets/svg/google_plus.svg", 512)
-            .icon("hangouts", "./assets/svg/hangouts.svg", 512)
-            .icon("twitter", "./assets/svg/twitter.svg", 512)
-            .icon("phone", "./assets/svg/phone.svg", 512)
+            .icon("true", "./assets/svg/return.svg")
+            .icon("false", "./assets/svg/oneway.svg")
             .icon('menu', './assets/svg/menu.svg', 24);
         $mdThemingProvider.theme('default')
-            .primaryPalette('blue')
-            .accentPalette('red');
+            .primaryPalette('orange')
+            .accentPalette('indigo');
     });
-})(ContactManagerApp || (ContactManagerApp = {}));
+})(FlytiveApp || (FlytiveApp = {}));
 //# sourceMappingURL=boot.js.map

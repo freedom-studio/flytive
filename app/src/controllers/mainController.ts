@@ -1,9 +1,11 @@
 /// <reference path="../_all.ts" />
 
-module ContactManagerApp {
+module FlytiveApp {
   export class MainController {
     static $inject = [
-      'userService', 
+      'packageService', 
+      'datesService', 
+      'NgMap', 
       '$mdSidenav', 
       '$mdToast', 
       '$mdDialog', 
@@ -11,7 +13,9 @@ module ContactManagerApp {
       '$mdBottomSheet'];
     
     constructor(
-      private userService: IUserService,
+      private packageService: IPackageService,
+      private datesService: IDatesService,
+      private NgMap,
       private $mdSidenav: angular.material.ISidenavService,
       private $mdToast: angular.material.IToastService,
       private $mdDialog: angular.material.IDialogService,
@@ -19,40 +23,77 @@ module ContactManagerApp {
       private $mdBottomSheet: angular.material.IBottomSheetService) {
       var self = this;
         
-      this.userService
-        .loadAllUsers()
-        .then((users: User[]) => {
-          self.users = users;
-          self.selected = users[0];
-          self.userService.selectedUser = self.selected;
-          
-          console.log(self.users);
+      this.packageService
+        .loadAllPackages()
+        .then((packages: Package[]) => {
+          self.assignScoreRange(packages);
+          self.packages = packages;
+          self.selected = packages[0];
+          self.packageService.selectedPackage = self.selected;
+          self.maxPriceTotal = Math.max.apply(Math, self.packages.map(function(o){return o.price;}));
+          self.maxPrice = Math.max.apply(Math, self.packages.map(function(o){return o.price;}));
+        });
+
+        this.datesService
+        .loadDates()
+        .then((dates: Date[]) => {
+          self.dates = dates;
+        });
+
+        NgMap.getMap("map").then(function(map) {
+         
         });
     }
+
+    packages: Package[] = [];
+    dates: Date[] = [];
+    selected: Package = null;
+    maxDistanceByLand: number = 1000;
+    maxPriceTotal: number = null;
+    maxPrice: number = null;
+
+    minOutboundDate: string;
+    maxOutboundDate: string;
+
+    currentNavItem: string = 'main-content';
+
+    assignScoreRange(packages: Package[]): void {
+      for (let pkg of packages) {
+        if (pkg.userScore <= 50) {
+          pkg.scoreRange = "score-a";
+        } else if (pkg.userScore <= 75) {
+          pkg.scoreRange = "score-b";
+        } else {
+          pkg.scoreRange = "score-c";
+        }
+     }
+    }
     
-    tabIndex: number = 0;
-    searchText: string = '';
-    users: User[] = [];
-    selected: User = null;
-    newNote: Note = new Note('', null);
-    
+    goto (page: string): void {
+      this.currentNavItem = page;     
+    }
+
     toggleSideNav() : void {
       this.$mdSidenav('left').toggle();
     }
     
-    selectUser (user: User) : void {
-      this.selected = user;
-      this.userService.selectedUser = user;
+    selectPackage (pkg: Package) : void {
+      this.selected = pkg;
+      this.packageService.selectedPackage = pkg;
       
       var sidenav = this.$mdSidenav('left');
       if (sidenav.isOpen()) {
         sidenav.close();
       }
-      
-      this.tabIndex = 0;
+
     }
     
-    showContactOptions($event) {
+    showDates($event) {
+
+
+    this.minOutboundDate = this.dates[0].outboundDate;
+    this.maxOutboundDate = this.dates[this.dates.length - 1].outboundDate;
+
       this.$mdBottomSheet.show({
         parent: angular.element(document.getElementById('wrapper')),
         templateUrl: './dist/view/contactSheet.html',
@@ -65,42 +106,9 @@ module ContactManagerApp {
       })      
     }
 
-    addUser($event) {
-      var self = this;
-      var useFullScreen = (this.$mdMedia('sm') || this.$mdMedia('xs'));
-      
-      this.$mdDialog.show({
-        templateUrl: './dist/view/newUserDialog.html',
-        parent: angular.element(document.body),
-        targetEvent: $event,
-        controller: AddUserDialogController,
-        controllerAs: 'ctrl',
-        clickOutsideToClose:true,
-        fullscreen: useFullScreen
-      }).then((user: CreateUser) => {
-        var newUser: User = User.fromCreate(user);
-        self.users.push(newUser);
-        self.selectUser(newUser);
-        self.openToast("User added");
-      }, () => {
-        console.log('You cancelled the dialog.');
-      });
-    }
+   
     
-    clearNotes($event) {
-      var confirm = this.$mdDialog.confirm()
-        .title('Are you sure you want to delete all notes?')
-        .textContent('All notes will be deleted, you can\'t undo this action.')
-        .targetEvent($event)
-        .ok('Yes')
-        .cancel('No');
-        
-      var self = this;
-      this.$mdDialog.show(confirm).then(() => {
-        self.selected.notes= [];
-        self.openToast('Cleared notes');
-      })
-    }
+   
     
     formScope: any;
     
@@ -108,22 +116,9 @@ module ContactManagerApp {
       this.formScope = scope;
     }
     
-    addNote() {
-      this.selected.notes.push(this.newNote); 
-      
-      // reset the form
-      this.formScope.noteForm.$setUntouched();
-      this.formScope.noteForm.$setPristine();
-       
-      this.newNote = new Note('', null);
-      this.openToast("Note added");
-    }
+   
     
-    removeNote(note: Note): void {
-      var foundIndex = this.selected.notes.indexOf(note);
-      this.selected.notes.splice(foundIndex, 1);
-      this.openToast("Note was removed");
-    }
+   
     
     openToast(message: string): void {
       this.$mdToast.show(
@@ -133,5 +128,7 @@ module ContactManagerApp {
           .hideDelay(3000)
       );
     }
+
+    
   }
 }

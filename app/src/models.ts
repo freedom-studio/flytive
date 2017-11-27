@@ -1,36 +1,35 @@
 /// <reference path="_all.ts" />
 
-module ContactManagerApp {
-  export class CreateUser {
-    constructor(
-      public firstName: string,
-      public lastName: string, 
-      public avatar: string, 
-      public bio: string)  {      
-    }
-  }
+module FlytiveApp {
   
-  export class User {
+  export class Package {
     constructor(
-      public name: string, 
-      public avatar: string, 
-      public bio: string, 
-      public notes: Note[])  {      
+      public id: number,
+      public destination: string,
+      public destCoords: string,
+      public origin: string,
+      public isReturn: boolean,
+      public price: number,
+      public userScore: number,
+      public scoreRange: string,
+      public isOnOneTicket: boolean,
+      public landDistance: number,
+      public regionIds: string,
+      public isWeekend: boolean
+      )  {      
     }
     
-    static fromCreate(user: CreateUser): User {
-      return new User(
-        user.firstName + ' ' + user.lastName,
-        user.avatar,
-        user.bio,
-        []);
-    }
   }   
-  
-  export class Note {
+
+  export class Date {
     constructor(
-      public title: string, 
-      public date: Date) {      
-    }
-  }  
+      public id: number,
+      public outboundDate: string,
+      public inboundDate: string,
+      public price: number
+      )  {      
+    }    
+  }
+  
+ 
 }

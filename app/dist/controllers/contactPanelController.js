@@ -1,9 +1,9 @@
 /// <reference path="../_all.ts" />
-var ContactManagerApp;
-(function (ContactManagerApp) {
-    var ContactPanelController = (function () {
-        function ContactPanelController(userService, $mdBottomSheet) {
-            this.userService = userService;
+var FlytiveApp;
+(function (FlytiveApp) {
+    var ContactPanelController = /** @class */ (function () {
+        function ContactPanelController(packageService, $mdBottomSheet) {
+            this.packageService = packageService;
             this.$mdBottomSheet = $mdBottomSheet;
             this.actions = [
                 { name: 'Phone', icon: 'phone' },
@@ -11,14 +11,14 @@ var ContactManagerApp;
                 { name: 'Google+', icon: 'google_plus' },
                 { name: 'Hangout', icon: 'hangouts' }
             ];
-            this.user = userService.selectedUser;
+            this.user = packageService.selectedPackage;
         }
         ContactPanelController.prototype.submitContact = function (action) {
             this.$mdBottomSheet.hide(action);
         };
-        ContactPanelController.$inject = ['userService', '$mdBottomSheet'];
+        ContactPanelController.$inject = ['packageService', '$mdBottomSheet'];
         return ContactPanelController;
-    })();
-    ContactManagerApp.ContactPanelController = ContactPanelController;
-})(ContactManagerApp || (ContactManagerApp = {}));
+    }());
+    FlytiveApp.ContactPanelController = ContactPanelController;
+})(FlytiveApp || (FlytiveApp = {}));
 //# sourceMappingURL=contactPanelController.js.map

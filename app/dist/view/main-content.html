@@ -1,2 +1,16 @@
-<md-icon md-svg-icon="{{vm.selected.avatar}}" class="avatar"></md-icon>
-<h2>{{vm.selected.name}}</h2>
+<div id="content">
+
+<p ng-if="!vm.packages.length">No packages.</p>
+<md-content>
+  <md-card class="pkg-card" layout="row" ng-repeat="pkg in vm.packages | orderBy: userScore" ng-click="vm.showDates(pkg.id)">
+    <div flex="10">{{pkg.userScore}}</div>
+      <img flex="" ng-src="../../assets/ovda.jpg" class="md-card-image" alt="Washed Out">
+    <md-card-content flex="60">
+      <h3>{{pkg.id}}</h3>
+      <p>{{pkg.origin}} <md-icon md-svg-icon="{{pkg.isReturn}}" size="48"></md-icon> <b>{{pkg.destination}}</b></p>
+
+    </md-card-content>
+
+  </md-card>
+</md-content>  
+</div>

@@ -1,7 +1,7 @@
 /// <reference path="../_all.ts" />
-var ContactManagerApp;
-(function (ContactManagerApp) {
-    var AddUserDialogController = (function () {
+var FlytiveApp;
+(function (FlytiveApp) {
+    var AddUserDialogController = /** @class */ (function () {
         function AddUserDialogController($mdDialog) {
             this.$mdDialog = $mdDialog;
             this.avatars = [
@@ -16,7 +16,7 @@ var ContactManagerApp;
         };
         AddUserDialogController.$inject = ['$mdDialog'];
         return AddUserDialogController;
-    })();
-    ContactManagerApp.AddUserDialogController = AddUserDialogController;
-})(ContactManagerApp || (ContactManagerApp = {}));
+    }());
+    FlytiveApp.AddUserDialogController = AddUserDialogController;
+})(FlytiveApp || (FlytiveApp = {}));
 //# sourceMappingURL=addUserDialogController.js.map

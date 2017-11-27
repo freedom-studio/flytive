@@ -1,17 +1,17 @@
 /// <reference path="../_all.ts" />
 
-module ContactManagerApp {
+module FlytiveApp {
   
   export class ContactPanelController {    
-    static $inject = ['userService', '$mdBottomSheet'];
+    static $inject = ['packageService', '$mdBottomSheet'];
     
     constructor(
-      private userService: IUserService, 
+      private packageService: IPackageService, 
       private $mdBottomSheet) {
-      this.user = userService.selectedUser;
+      this.user = packageService.selectedPackage;
     }
   
-    user: User;
+    user: Package;
     
     actions = [
       { name: 'Phone'       , icon: 'phone' },

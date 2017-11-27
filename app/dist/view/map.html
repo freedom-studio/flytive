@@ -1,0 +1,19 @@
+
+<div map-lazy-load="https://maps.googleapis.com/maps/api/js?key=AIzaSyCUwtOrxLlaBKi3sLN0EcwvrgdF0_HF2rQ&callback=initMap" >
+    <ng-map id="map" min-zoom="2" zoom="2" center="50,20">
+            <custom-marker position="kraków" size="10">
+                    <ng-md-icon class="map-icon" size="25" icon="stars"></ng-md-icon> 
+                  </custom-marker>
+
+                  <custom-marker ng-repeat="pkg in vm.packages | orderBy:'-userScore'" position="{{pkg.destCoords}}">
+                  <div class="marker {{pkg.scoreRange}}" ng-init="x=false" ng-click="vm.showDates(pkg.id)" ng-mouseover="x=true" ng-mouseleave="x=false">  
+                      {{pkg.price}} zł
+                      <div class="marker-text {{pkg.scoreRange}}" ng-if="x">
+                           | {{pkg.origin}} <img ng-src="{{'../../assets/' + pkg.isReturn + '.png'}}" alt> <b>{{pkg.destination}}</b></div>
+                  </div>
+                </custom-marker>
+
+    </ng-map>
+</div>
+
+

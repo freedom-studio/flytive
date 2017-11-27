@@ -1,36 +1,53 @@
  <md-sidenav class="md-sidenav-left md-whiteframe-z2" 
                 md-component-id="left" 
                 md-is-locked-open="$mdMedia('gt-sm')">
-  <md-toolbar>
-    <h1>Contacts</h1>
-  </md-toolbar>
-  <div layout-padding>
-    <md-autocomplete
-      md-search-text="vm.searchText"
-      md-items="item in vm.users | filter:vm.searchText"
-      md-item-text="item.name"
-      md-min-length="3"
-      placeholder="filter">
-      <md-item-template>
-        <span md-highlight-text="vm.searchText" md-highlight-flags="^i">{{item.name}}</span>
-      </md-item-template>
-      <md-not-found>
-        No user matching "{{vm.searchText}}" were found.          
-      </md-not-found>
-    </md-autocomplete>
-  </div>
+              
+                <header class="nav-header">
+                    <a ng-href="/" class="docs-logo">
+                      <img src="../../assets/logo.png" alt>
+                    </a>
+                  </header>             
+
+
   <md-content class="scrollable-nav-content">
-    <md-list>
-      <md-list-item ng-repeat="user in vm.users | filter:vm.searchText | orderBy:'name'">
-        <md-button ng-click="vm.selectUser(user)" 
-                   ng-class="{'selected': user === vm.selected }">
-          <md-icon md-svg-icon="{{user.avatar}}" class="avatar"></md-icon>
-          {{user.name}}
-        </md-button>
-      </md-list-item>
-    </md-list>
+      <md-input-container class="md-block" flex>
+          <label>Company </label>
+          <input ng-model="user.company">
+        </md-input-container>
+
+        <md-slider-container layout="row">
+            <md-slider flex="75" min="50" max="1500" ng-model="vm.maxDistanceByLand" aria-label="red" id="red-slider">
+            </md-slider>
+      <span flex="25" class="slider-number" >{{vm.maxDistanceByLand}} km</span>
+          </md-slider-container>
+
+
+        <div layout="row">
+            <div flex>
+             
+              <md-datepicker ng-model="myDate" md-placeholder="Enter date" md-open-on-focus></md-datepicker>
+            </div>
+            <div flex>
+               
+                <!-- <md-datepicker ng-model="ctrl.myDate" md-placeholder="Enter date" md-open-on-focus></md-datepicker> -->
+              </div>
+          </div>
+
+          <md-slider-container layout="row">
+              <md-slider flex="75" min="50" max="{{vm.maxPriceTotal}}" ng-model="vm.maxPrice" aria-label="" >
+              </md-slider>
+        <span flex="25" class="slider-number" >{{vm.maxPrice}} zł</span>
+            </md-slider-container>
+  
+            <md-checkbox ng-model="data.cb1" aria-label="Checkbox 1">
+
+                <md-button class="md-raised md-primary">Primary</md-button>
+                <md-button ng-disabled="true" class="md-raised md-primary">Disabled</md-button>  <md-button ng-disabled="true" class="md-raised md-primary">Disabled</md-button>
+
+                <label>Trip option</label>
+                <!-- <label>SortBy</label> -->
+                <label>Tickets</label>
+
   </md-content>
-  <md-button class="md-fab md-fab-bottom-right" ng-click="vm.addUser($event)">
-    <ng-md-icon icon="add"></ng-md-icon>
-  </md-button>
+
 </md-sidenav>

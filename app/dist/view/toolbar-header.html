@@ -3,30 +3,42 @@
     <md-button hide-gt-sm ng-click="vm.toggleSideNav()" class="md-icon-button">
        <md-icon md-svg-icon="menu"></md-icon>
     </md-button>
-    <h1>
-      Contact Manager
-    </h1>
-    <md-fab-speed-dial ng-cloak
-      md-direction="down"
-      class="md-fling md-fab-top-right">
-      <md-fab-trigger>
-        <md-button class="md-fab">
-          <md-icon md-svg-icon="menu"></md-icon>  
-        </md-button>
-      </md-fab-trigger>
-      <md-fab-actions>
-        <md-button class="md-fab md-raised md-mini"
-                   ng-click="vm.showContactOptions($event)">
-          <ng-md-icon icon="face"></ng-md-icon>
-          <md-tooltip md-direction="left">Contact</md-tooltip>
-        </md-button>
-        <md-button class="md-fab md-raised md-mini"
-                   ng-click="vm.clearNotes($event)">
-          <ng-md-icon icon="clear_all"></ng-md-icon>
-          <md-tooltip md-direction="left">Clear all notes</md-tooltip>
-        </md-button>
-      </md-fab-actions>
-    </md-fab-speed-dial> 
-     
+    <md-nav-bar  md-selected-nav-item="vm.currentNavItem" nav-bar-aria-label="navigation links">
+        <md-nav-item md-nav-click="vm.goto('main-content')" name="main-content">
+          List
+        </md-nav-item>
+        <md-nav-item md-nav-click="vm.goto('map')" name="map">
+          Map
+        </md-nav-item>
+        
+        
+        </md-nav-bar>
+
+        <md-fab-speed-dial ng-cloak
+        ng-if="vm.currentNavItem==='main-content'"
+        md-direction="down"
+        class="md-scale md-fab-top-right"
+        aria-label="Speed dial options">
+        <md-fab-trigger>
+          <md-button class="md-fab">
+              <ng-md-icon icon="sort"></ng-md-icon>  
+          </md-button>
+          <md-tooltip md-direction="left">Sort by</md-tooltip>
+        </md-fab-trigger>
+        <md-fab-actions>
+            <md-button class="md-fab md-raised md-mini"
+            ng-click="vm.clearNotes($event)">
+   <ng-md-icon icon="grade"></ng-md-icon>
+   <md-tooltip md-direction="left">Attractiveness</md-tooltip>
+ </md-button>
+          <md-button class="md-fab md-raised md-mini"
+                     ng-click="vm.showContactOptions($event)">
+            <ng-md-icon icon="attach_money"></ng-md-icon>
+            <md-tooltip md-direction="left">Price</md-tooltip>
+          </md-button>
+         
+        </md-fab-actions>
+      </md-fab-speed-dial> 
+        
   </div>
-</md-toolbar>
+</md-toolbar> 

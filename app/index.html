@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="contactManagerApp">
+<html lang="en" ng-app="flytiveApp">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -23,19 +23,9 @@
     
     <div layout="column" flex id="wrapper">
       <div ng-include="'dist/view/toolbar-header.html'"></div>
-      <md-content flex id="content">
-        <div ng-include="'dist/view/main-content.html'"></div>
+      <md-content flex >
+        <div ng-include src="'dist/view/' + vm.currentNavItem + '.html'"></div>
         
-        <md-tabs md-dynamic-height="" 
-                 md-stretch-tabs="always" 
-                 md-selected="vm.tabIndex">
-          <md-tab label="Bio">
-            <div ng-include="'dist/view/tab-bio.html'"></div>           
-          </md-tab>
-          <md-tab label="Notes">
-            <div ng-include="'dist/view/tab-notes.html'"></div>            
-          </md-tab>
-        </md-tabs>
       </md-content>
     </div>
     
@@ -45,13 +35,15 @@
     <script src="./bower_components/angular-material/angular-material.js"></script>
     <script src="./bower_components/angular-messages/angular-messages.js"></script>
     <script src="./bower_components/angular-material-icons/angular-material-icons.js"></script>
+    <script src="./bower_components/ngmap/build/scripts/ng-map.min.js"></script>
     
     <script src="./dist/models.js"></script>
-    <script src="./dist/services/userService.js"></script>
+    <script src="./dist/services/packageService.js"></script>
+    <script src="./dist/services/datesService.js"></script>
     <script src="./dist/controllers/addUserDialogController.js"></script>
     <script src="./dist/controllers/contactPanelController.js"></script>
     <script src="./dist/controllers/mainController.js"></script>
-    <script src="./dist/boot.js"></script>
+    <script src="./dist/boot.js"></script>    
   </body>
   
 </html>

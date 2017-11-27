@@ -1,35 +1,10 @@
 html, body {
   font-family: 'Roboto', sans-serif;
-  font-size:14px;
-  height:100%;
+  font-size: 14px;
+  height: 100%;
   margin: 0px;
   padding: 0px;
 }
-
-md-toolbar h1 {
-  font-size: 1.250em;
-  font-weight: 400;
-  margin: auto
-}
-
-md-toolbar .md-toolbar-tools h1 {
-  font-size: 1.250em;
-  font-weight: 400;  
-}
-
-md-list .md-button {
-  color: inherit;
-  font-weight: 500;
-  text-align: left;
-  width: 100%;
-}
-  md-list .md-button.selected {
-    color: #03a9f4;
-  }
-
-  md-sidenav  md-list {
-    padding: 0px 0px 8px 0px;
-  }
 
 #content  {
   padding-left: 40px;
@@ -37,45 +12,149 @@ md-list .md-button {
   padding-top: 5px;
 }
 
-#content md-icon.avatar {
-  margin-top: 10px;
-}
-
-.avatar {
-  position: relative;
-  width: 128px;
-  height: 128px;
-  border: 1px solid #ddd;
-  border-radius: 50%;
-  display: inline-block;
-  overflow: hidden;
-  margin: 0px;
-  vertical-align: middle;
-  zoom:0.70;
-  transform: translateZ(0);
-  -webkit-transform: scale(0.70);
-  -moz-transform:scale(0.70);
-}
-
 .scrollable-nav-content {
   position: absolute;
-  top: 136px;
+  top: 85px;
   bottom: 0px;
   left: 0px;
-  width: 100%;
+  width: 90%;
   overflow: auto;
+  padding: 15px 5px 15px 20px;
 }
 
-md-bottom-sheet  md-icon {
-  margin-right:20px;
+
+/* BEGIN SIDENAV */
+
+.nav-header {
+  background-color: white;
 }
 
-span.name {
-  font-weight: bold;
-  font-size:1.1em;
-  padding-left:5px;
-}
-
-.date-row {
+.slider-number {
  margin: 16px 0px;
+ text-align: right;
+ font-weight: 700;
 }
+
+/* END SIDENAV */
+
+
+/* BEGIN DATEPICKER */
+
+.fixed-calendar {
+  height: 320px;
+  display: block;
+}
+
+.md-calendar-date .md-calendar-date-selection-indicator {
+  background-color: #FFB300;
+  color: white;
+}
+
+.md-focus .md-calendar-date-selection-indicator {
+  background-color: green !important;
+}
+
+/* END DATEPICKER */
+
+
+
+/* BEGIN MAIN CONTENT */
+
+.pkg-card {
+  cursor: pointer;
+}
+
+.pkg-card img {
+
+  overflow: hidden;
+}
+
+/* END MAIN CONTENT */
+
+
+
+/* BEGIN MAP */
+
+#map {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+ng-map {width:100%; height:100%;position: absolute;}
+
+.map-icon {
+  position: relative;
+  top: 20px;
+}
+
+.marker:focus {
+  outline: none !important;
+}
+
+.marker {
+  font-size: 15px;
+  padding: 2px 0;
+  width: 55px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.marker:hover {
+  z-index: 2;
+}
+
+.marker:after {
+  content: '';
+  position: absolute;
+  border-style: solid;
+  border-width: 7px 6px 0;
+  display: block;
+  width: 0;
+  z-index: -1;
+  margin-left: -6px;
+  bottom: -6px;
+  left: 50%;
+}
+
+.score-a {
+  background: yellow;
+}
+
+.score-a:after {
+  border-color: yellow transparent;
+}
+
+.score-b {
+  background: aquamarine;
+}
+
+.score-b:after {
+  border-color: aquamarine transparent;
+}
+
+.score-c {
+  background: #aaaaaa;
+}
+
+.score-c:after {
+  border-color: #aaaaaa transparent;
+}
+
+.marker-text {
+  position: absolute; left: 51px; bottom: 0px;
+  font-size: 15px;
+  padding: 4px 2px 4px 5px;
+  -webkit-border-radius: 0 4px 4px 0;
+  -moz-border-radius: 0 4px 4px 0;
+  border-radius: 0 4px 4px 0;
+  cursor: pointer;
+  z-index: 2;
+  white-space: nowrap;
+}
+
+/* END MAP */

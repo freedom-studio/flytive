@@ -55,6 +55,8 @@ module FlytiveApp {
     minOutboundDate: string;
     maxOutboundDate: string;
 
+    startLocation: string = "Kraków";
+
     currentNavItem: string = 'main-content';
 
     assignScoreRange(packages: Package[]): void {

@@ -10,18 +10,19 @@
 
 
   <md-content class="scrollable-nav-content">
-      <md-input-container class="md-block" flex>
-          <label>Company </label>
-          <input ng-model="user.company">
+      <md-input-container class="md-block start-location" flex layout="column">
+          <label>YOUR LOCATION </label>
+          <input ng-model="vm.startLocation">
         </md-input-container>
 
+        <label class="navbar-label">NEARBY AIRPORTS (distance from {{vm.startLocation}}) </label>
         <md-slider-container layout="row">
             <md-slider flex="75" min="50" max="1500" ng-model="vm.maxDistanceByLand" aria-label="red" id="red-slider">
             </md-slider>
       <span flex="25" class="slider-number" >{{vm.maxDistanceByLand}} km</span>
           </md-slider-container>
 
-
+          <label class="navbar-label">TRAVEL DATES RANGE </label>
         <div layout="row">
             <div flex>
              
@@ -33,20 +34,46 @@
               </div>
           </div>
 
+          <md-input-container class="md-block start-location" flex layout="column">
+                <label>DESTINATION </label>
+                <input ng-model="">
+              </md-input-container>
+
+          <div flex="100" class="navbar-element">
+          <label class="navbar-label">MAX PRICE </label>
           <md-slider-container layout="row">
               <md-slider flex="75" min="50" max="{{vm.maxPriceTotal}}" ng-model="vm.maxPrice" aria-label="" >
               </md-slider>
         <span flex="25" class="slider-number" >{{vm.maxPrice}} zł</span>
             </md-slider-container>
-  
-            <md-checkbox ng-model="data.cb1" aria-label="Checkbox 1">
+        </div>
+            
 
-                <md-button class="md-raised md-primary">Primary</md-button>
-                <md-button ng-disabled="true" class="md-raised md-primary">Disabled</md-button>  <md-button ng-disabled="true" class="md-raised md-primary">Disabled</md-button>
+                <div flex="100" class="navbar-element">
+                <label class="navbar-label">TRAVEL OPTIONS </label>
+                <div class="multiple-button">
+                <md-button class="md-raised md-primary">All</md-button>
+                <md-button ng-disabled="true" class="md-raised md-primary">Return</md-button>
+                <md-button ng-disabled="true" class="md-raised md-primary">One way</md-button>
+            </div>
+            </div>
 
-                <label>Trip option</label>
-                <!-- <label>SortBy</label> -->
-                <label>Tickets</label>
+                <div flex="100" class="navbar-element">
+                <label class="navbar-label">TIKETS</label>
+                <div class="multiple-button">
+                        <md-button class="md-raised md-primary">All</md-button>
+                        <md-button ng-disabled="true" class="md-raised md-primary">One ticket</md-button>          
+                    </div>
+            </div>
+
+                
+                <div flex="100" class="navbar-element">
+                        <md-checkbox ng-model="data.cb1" aria-label="Checkbox 1">
+                        <label class="navbar-label">WEEKEND FLIGHTS </label>
+                        
+                </div>
+               
+                        
 
   </md-content>
 

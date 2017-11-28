@@ -17,6 +17,7 @@ var FlytiveApp;
             this.maxDistanceByLand = 1000;
             this.maxPriceTotal = null;
             this.maxPrice = null;
+            this.startLocation = "Kraków";
             this.currentNavItem = 'main-content';
             var self = this;
             this.packageService

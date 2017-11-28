@@ -3,13 +3,44 @@
 <p ng-if="!vm.packages.length">No packages.</p>
 <md-content>
   <md-card class="pkg-card" layout="row" ng-repeat="pkg in vm.packages | orderBy: userScore" ng-click="vm.showDates(pkg.id)">
-    <div flex="10">{{pkg.userScore}}</div>
-      <img flex="" ng-src="../../assets/ovda.jpg" class="md-card-image" alt="Washed Out">
-    <md-card-content flex="60">
-      <h3>{{pkg.id}}</h3>
-      <p>{{pkg.origin}} <md-icon md-svg-icon="{{pkg.isReturn}}" size="48"></md-icon> <b>{{pkg.destination}}</b></p>
+    
+    <div hide show-gt-xs flex-gt-xs="10">
+      <div class="plntokm {{pkg.scoreRange}}">
+          {{pkg.userScore}}<br />
+          <md-icon md-svg-icon="plntokm"></md-icon>
 
-    </md-card-content>
+      </div>      
+    </div>
+
+    <div hide flex="30" show-gt-xs class="card-image">
+    <img  ng-src="../../assets/brussels.jpg" alt>
+    </div>
+
+    <div flex="" hide show-gt-xs class="card-main" layout="row" layout-align="start center">
+        {{pkg.origin}} <md-icon md-svg-icon="{{pkg.isReturn}}" ></md-icon> <b>{{pkg.destination}}</b>
+    </div>
+
+    <div hide-gt-xs flex="100">
+        <div hide-gt-xs layout="row">
+            <div flex="30" class="{{pkg.scoreRange}} plntokm-xs">
+            {{pkg.userScore}}
+            <md-icon md-svg-icon="plntokm" class="icon" size="100"></md-icon>
+          </div>
+          <div flex="70" layout="row" layout-align="end center" class="card-price-xs">{{pkg.price}} PLN</div>
+          </div>
+      <div class="card-main-xs" layout="row" layout-align="start center">
+        
+        {{pkg.origin}} <md-icon md-svg-icon="{{pkg.isReturn}}"></md-icon> <b>{{pkg.destination}}</b>
+        
+      </div>
+      <div hide-gt-xs layout="row" layout-align="center end" class="card-image-xs">
+          <img  ng-src="../../assets/brussels.jpg"  alt>
+          </div>
+    </div>
+
+    <div hide show-gt-xs flex-gt-xs="20" class="card-price" layout="row" layout-align="end center">
+      {{pkg.price}} PLN
+    </div>
 
   </md-card>
 </md-content>  

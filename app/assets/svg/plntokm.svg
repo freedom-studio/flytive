@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   version="1.1"
+   id="svg2"
+   viewBox="0 0 708.66142 425.19685"
+   height="120mm"
+   width="200mm">
+  <defs
+     id="defs4" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     transform="translate(0,-627.16536)"
+     id="layer1">
+    <g
+       transform="matrix(1.2925203,0,0,1.2925203,-80.43836,-53.32793)"
+       id="g4153">
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-weight:normal;font-size:125px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         x="223.42856"
+         y="637.21936"
+         id="text4136"><tspan
+           id="tspan4138"
+           x="223.42856"
+           y="637.21936"
+           style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Roboto;-inkscape-font-specification:'Roboto Italic'">PLN</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-weight:normal;font-size:125px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         x="93.14286"
+         y="832.36224"
+         id="text4140"><tspan
+           id="tspan4142"
+           x="93.14286"
+           y="832.36224"
+           style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Roboto;-inkscape-font-specification:'Roboto Italic'">1000 km</tspan></text>
+      <rect
+         style="opacity:1;fill:#000000;fill-opacity:1;stroke:#ffffff;stroke-width:68.07041168;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:20.10000229;stroke-dasharray:272.28167079, 272.28167079;stroke-dashoffset:65.37020874;stroke-opacity:0"
+         id="rect4144"
+         width="456.8273"
+         height="10"
+         x="108.72923"
+         y="682.52002"
+         ry="1.7685642" />
+    </g>
+  </g>
+</svg>

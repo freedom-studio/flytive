@@ -11,6 +11,7 @@ module FlytiveApp {
       $mdIconProvider
         .icon("true"      , "./assets/svg/return.svg")
         .icon("false"      , "./assets/svg/oneway.svg")
+        .icon("plntokm"      , "./assets/svg/plntokm.svg")
         .icon('menu',        './assets/svg/menu.svg'        , 24);
         
       $mdThemingProvider.theme('default')
